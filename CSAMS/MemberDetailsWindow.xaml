@@ -1,0 +1,71 @@
+﻿<Window x:Class="CSAMS.MemberDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Member Details" Height="600" Width="900" WindowStartupLocation="CenterScreen"
+        Background="White">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Background="#0F172A" CornerRadius="4" Padding="16" DockPanel.Dock="Top" Margin="0,0,0,20">
+            <TextBlock Text="Member Details"
+       Foreground="White"
+       FontSize="24"
+       FontWeight="Bold"
+       VerticalAlignment="Center"/>
+        </Border>
+
+        <!-- Info Section -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Top Info -->
+            <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,0,0,20">
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Student Name: " FontWeight="Bold"/>
+                    <TextBlock x:Name="StudentNameText" Text="Fiel, Bea Bnejie"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Total Fines in Php: " FontWeight="Bold"/>
+                    <TextBlock x:Name="TotalFinesText" Text="1000.00" Foreground="Red"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Year: " FontWeight="Bold"/>
+                    <TextBlock x:Name="YearLevelText" Text="3rd"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Student ID: " FontWeight="Bold"/>
+                    <TextBlock x:Name="StudentIDText" Text="22-1-02483"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Status: " FontWeight="Bold"/>
+                    <TextBlock x:Name="StatusText" Text="Irregular"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Biometrics Status: " FontWeight="Bold"/>
+                    <Border Background="#90EE90" Padding="5,2" CornerRadius="4">
+                        <TextBlock x:Name="BiometricsStatusText" Text="Added" Foreground="Black"/>
+                    </Border>
+                </WrapPanel>
+            </StackPanel>
+
+            <!-- Absences Table -->
+            <GroupBox Header="Absences" Grid.Row="1">
+                <DataGrid x:Name="AbsencesDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,10,0,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Event Name" Binding="{Binding EventName}" Width="*" />
+                        <DataGridTextColumn Header="Date and Time Added" Binding="{Binding DateTimeAdded}" Width="200"/>
+                        <DataGridTextColumn Header="Attendees" Binding="{Binding Attendees}" Width="100"/>
+                        <DataGridTextColumn Header="Fines" Binding="{Binding Fines}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>

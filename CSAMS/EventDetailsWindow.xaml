@@ -1,0 +1,100 @@
+﻿<Window x:Class="CSAMS.EventDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Event Details"
+        Height="800"
+        Width="1300"
+        WindowStartupLocation="CenterScreen"
+        Background="#F8FAFC">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Background="#0F172A" CornerRadius="4" Padding="16" DockPanel.Dock="Top" Margin="0,0,0,20">
+            <TextBlock Text="Event Details"
+                       Foreground="White"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center"/>
+        </Border>
+
+        <!-- Content -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Panel -->
+            <StackPanel Grid.Column="0" Margin="0,10,10,0">
+                <Button Content="Scanned" Height="40" Background="#1E293B" Foreground="White" Margin="0,0,0,10"/>
+                <Button Content="Absences" Height="40" Background="White" Foreground="Black" BorderBrush="#CBD5E1" BorderThickness="1"/>
+
+                <TextBlock Text="Scan" FontSize="28" FontWeight="Bold" Margin="0,30,0,10"/>
+                <Button Content="Scan" Height="40" Background="#1E293B" Foreground="White" Margin="0,0,0,20"/>
+
+                <TextBlock Text="Time-in" FontWeight="Bold" FontSize="16"/>
+                <TextBlock x:Name="TimeInText" Text="02:17 am" FontSize="18" Margin="0,0,0,20"/>
+
+                <TextBlock Text="No. of attendees" FontWeight="Bold" FontSize="16"/>
+                <TextBlock x:Name="AttendeeCountText" Text="333" FontSize="18"/>
+            </StackPanel>
+
+            <!-- Right Panel -->
+            <StackPanel Grid.Column="1" Margin="10,10,0,0">
+                <TextBlock Text="Event name: name of event" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,20"/>
+
+                <!-- Search bar and filter -->
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                    <TextBlock Text="Scaned Atendees" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                    <TextBox Width="200" Height="25"/>
+                    <Button Width="30" Height="25" Background="#1B1B42" Margin="5,0,0,0">
+                        <TextBlock Text="🔍" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                    </Button>
+                    <TextBlock Text="Filter" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                    <ComboBox Width="100" Height="25">
+                        <ComboBoxItem Content="1st Year"/>
+                        <ComboBoxItem Content="2nd Year"/>
+                        <ComboBoxItem Content="3rd Year"/>
+                        <ComboBoxItem Content="4th Year"/>
+                        <ComboBoxItem Content="4th Year Above"/>
+                        <ComboBoxItem Content="Regular"/>
+                        <ComboBoxItem Content="Irregular"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- DataGrid -->
+                <DataGrid x:Name="ScannedAttendeesGrid"
+                          AutoGenerateColumns="False"
+                          HeadersVisibility="Column"
+                          CanUserAddRows="False"
+                          Height="600"
+                          RowHeight="35"
+                          Background="White"
+                          BorderBrush="#CBD5E1"
+                          BorderThickness="1">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Student ID" Binding="{Binding StudentId}" Width="*" />
+                        <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="*" />
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="*" />
+                        <DataGridTextColumn Header="Year" Binding="{Binding Year}" Width="60"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*" />
+                        <DataGridTextColumn Header="Date and Time added" Binding="{Binding AddedAt}" Width="160"/>
+                        <DataGridTemplateColumn Header="Actions" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Details" Padding="6,2"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

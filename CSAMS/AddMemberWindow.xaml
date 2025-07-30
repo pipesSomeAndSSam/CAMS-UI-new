@@ -1,0 +1,76 @@
+﻿<Window x:Class="CSAMS.AddMemberWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Members" Height="450" Width="600"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#F8FAFC">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Background="#0F172A" CornerRadius="4" Padding="16" DockPanel.Dock="Top" Margin="0,0,0,20">
+        <TextBlock Text="Add Members"
+               Foreground="White"
+               FontSize="24"
+               FontWeight="Bold"
+               VerticalAlignment="Center"/>
+        </Border>
+
+        <!-- Form Fields -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left side form -->
+            <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                <TextBlock Text="Last Name"/>
+                <TextBox Margin="0,0,0,10"/>
+
+                <TextBlock Text="First Name"/>
+                <TextBox Margin="0,0,0,10"/>
+
+                <TextBlock Text="Student ID"/>
+                <TextBox Margin="0,0,0,10"/>
+
+                <TextBlock Text="Date and Time added"/>
+                <TextBlock x:Name="DateTimeTextBlock" FontWeight="Bold" Foreground="Black" Margin="0,0,0,10"/>
+
+                <CheckBox Content="Add without fingerprint" Margin="0,10"/>
+            </StackPanel>
+
+            <!-- Right side -->
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Year Level"/>
+                <ComboBox Margin="0,0,0,10">
+                    <ComboBoxItem Content="1st Year"/>
+                    <ComboBoxItem Content="2nd Year"/>
+                    <ComboBoxItem Content="3rd Year"/>
+                    <ComboBoxItem Content="4th Year"/>
+                    <ComboBoxItem Content="4th Year Above"/>
+                </ComboBox>
+
+                <TextBlock Text="Student Status"/>
+                <ComboBox Margin="0,0,0,10">
+                    <ComboBoxItem Content="Regular"/>
+                    <ComboBoxItem Content="Irregular"/>
+                </ComboBox>
+
+                <Rectangle Height="100" Fill="#FFF" Stroke="#CCC" Margin="0,10"/>
+            </StackPanel>
+
+            <!-- Buttons -->
+            <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,20,0,0">
+                <Button Content="Add Member" Width="100" Background="#1E293B" Foreground="White" Margin="0,0,10,0"/>
+                <Button Content="Scan Biometrics" Width="120" Background="#1E293B" Foreground="White"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
